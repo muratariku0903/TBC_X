@@ -28,7 +28,7 @@
 import axios from '@/supports/axios'
 
 export default {
-  name: 'Login',
+  name: 'ログイン',
   data () {
     return {
       email: '',
