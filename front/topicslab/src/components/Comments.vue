@@ -2,10 +2,10 @@
   <div>
     <Fieldset v-for="comment in comments" :key="comment.id">
       <template #legend>
-        <span>{{comment.user.name}}</span>
+        <span>{{ comment.user.name }}</span>
       </template>
       <div class="comment-text">
-        {{comment.body}}
+        {{ comment.body }}
       </div>
     </Fieldset>
   </div>
@@ -26,6 +26,6 @@ export default {
 }
 
 .comment-text {
-  white-space:pre-wrap;
+  white-space: pre-wrap;
 }
 </style>

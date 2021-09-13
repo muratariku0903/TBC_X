@@ -9,7 +9,7 @@
       </template>
       <template #footer>
         <Button label="トピック新規作成" v-on:click="toNewTopic" />
-        <Button label="ログイアウト" class="p-button-warning" v-on:click="logout" />
+        <Button label="ログアウト" class="p-button-warning" v-on:click="logout" />
         <Button label="サインアウト" class="p-button-danger" v-on:click="withdraw" />
       </template>
     </Card>
