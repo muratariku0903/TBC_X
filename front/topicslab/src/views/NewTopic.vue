@@ -89,6 +89,6 @@ export default {
   width: 100%;
 }
 .eror-message{
-  color: red;
+  color: #f00;
 }
 </style>
