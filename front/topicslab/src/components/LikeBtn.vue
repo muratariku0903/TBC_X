@@ -1,5 +1,5 @@
 <template>
-  <Button label="" icon="pi pi-heart" class="p-button-raised p-button-rounded like_btn" />
+  <Button icon="pi pi-heart" class="p-button-raised p-button-rounded like_btn" />
 </template>
 
 <script>
