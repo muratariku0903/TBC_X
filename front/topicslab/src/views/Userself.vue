@@ -31,7 +31,6 @@ export default {
       this.$router.push('login')
       return
     }
-
     this.getUser()
   },
   methods: {
