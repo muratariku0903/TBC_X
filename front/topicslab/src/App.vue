@@ -11,6 +11,9 @@
   <div class="content">
     <router-view/>
   </div>
+  <div class="copyright">
+    <small>&copy;2021 TBCXteam All Rights Reserved.</small>
+  </div>
 </template>
 
 <script>
@@ -66,5 +69,10 @@ body {
       color: #42b983;
     }
   }
+}
+.copyright{
+  text-align: center;
+  color: #2c3e50;
+  opacity: 0.6;
 }
 </style>
