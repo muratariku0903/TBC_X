@@ -2,7 +2,7 @@
   <div id="nav">
     <router-link to="/">ホーム</router-link> |
     <template v-if="authenticated">
-      <a>mypage</a>
+      <router-link to="/mypage">マイページ</router-link>
     </template>
     <template v-else>
       <router-link to="/login">ログイン</router-link>
@@ -10,9 +10,6 @@
   </div>
   <div class="content">
     <router-view/>
-  </div>
-  <div class="copyright">
-    <small>&copy;2021 TBCXteam All Rights Reserved.</small>
   </div>
 </template>
 
@@ -69,10 +66,5 @@ body {
       color: #42b983;
     }
   }
-}
-.copyright{
-  text-align: center;
-  color: #2c3e50;
-  opacity: 0.6;
 }
 </style>
