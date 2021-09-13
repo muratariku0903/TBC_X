@@ -1,9 +1,7 @@
 <template>
   <div>
     <Card>
-      <template #title>
-        Login
-      </template>
+      <template #title>ログイン</template>
       <template #content>
         <div class="fields">
           <div class="p-field">
@@ -15,9 +13,14 @@
             <InputText id="password" type="password" v-model="password" />
           </div>
         </div>
-        <span class="login-err-msg">{{message}}</span>
+        <span class="login-err-msg">{{ message }}</span>
         <div class="p-field">
-          <Button icon="pi pi-check" label="Login" v-on:click="login" />
+          <Button icon="pi pi-check" label="ログイン" v-on:click="login" />
+        </div>
+        <div class="p-field">
+          <a href="./register" class="register_btn">
+            <Button icon="pi pi-check" label="新規登録" />
+          </a>
         </div>
       </template>
     </Card>
@@ -39,12 +42,14 @@ export default {
   },
   methods: {
     login () {
-      axios.get('/sanctum/csrf-cookie')
+      axios
+        .get('/sanctum/csrf-cookie')
         .then(() => {
-          axios.post('/api/login', {
-            email: this.email,
-            password: this.password
-          })
+          axios
+            .post('/api/login', {
+              email: this.email,
+              password: this.password
+            })
             .then((res) => {
               if (res.status === 200) {
                 console.log('ログイン成功')
@@ -73,7 +78,7 @@ export default {
   }
 
   .login-err-msg {
-  color: red;
+    color: red;
   }
 
   .p-field {
