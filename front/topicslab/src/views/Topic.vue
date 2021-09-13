@@ -10,9 +10,12 @@
         </div>
       </template>
       <template #footer>
-        <span>
-          <router-link :to="`/user/${user.id}`">{{user.name}}</router-link>
-        </span>
+        <div class="box">
+          <span>
+            <router-link :to="`/user/${user.id}`">{{user.name}}</router-link>
+          </span>
+          <LikeBtn/>
+        </div>
       </template>
     </Card>
     <Comments :comments="this.comments" />
@@ -24,12 +27,14 @@
 import axios from '@/supports/axios'
 import Comments from '@/components/Comments'
 import CommentForm from '@/components/CommentForm'
+import LikeBtn from '@/components/LikeBtn'
 
 export default {
   name: 'Topic',
   components: {
     Comments,
-    CommentForm
+    CommentForm,
+    LikeBtn
   },
   data () {
     return {
