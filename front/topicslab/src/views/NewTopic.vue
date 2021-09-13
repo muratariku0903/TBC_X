@@ -16,7 +16,7 @@
         <span class="error-message">{{messages.body}}</span>
       </div>
       <div class="p-field">
-        <Button icon="pi pi-check" label="Save" v-on:click="submit" />
+        <Button icon="pi pi-check" label="保存" v-on:click="submit" />
         <span class="error-message">{{messages.submit}}</span>
       </div>
     </template>
