@@ -14,7 +14,7 @@
           <span>
             <router-link :to="`/user/${user.id}`">{{user.name}}</router-link>
           </span>
-          <LikeBtn/>
+          <LikeBtn v-on:click="like_submit"/>
         </div>
       </template>
     </Card>
@@ -41,7 +41,10 @@ export default {
       topic: {},
       user: {},
       comments: [],
-      id: null
+      id: null,
+      messages: {
+        submit: ''
+      }
     }
   },
   mounted () {
@@ -80,6 +83,31 @@ export default {
     },
     receiveComment (comment) {
       this.comments.push(comment)
+    },
+    like_submit () {
+      axios.get('/sanctum/csrf-cookie')
+        .then(() => {
+          axios.post('/api/topic_like', {
+            user_id: this.user.id,
+            topic_id: this.topic.id
+          })
+            .then((res) => {
+              if (res.status === 201) {
+                console.log('いいね送信に成功しました。')
+              } else if (res.status === 200) {
+                console.log('いいねを外しました。')
+              } else {
+                this.messages.submit = 'いいね送信に失敗しました。'
+              }
+            })
+            .catch((err) => {
+              console.log(err)
+              this.messages.submit = 'いいね送信に失敗しました。'
+            })
+        })
+        .catch((err) => {
+          alert(err)
+        })
     }
   }
 }

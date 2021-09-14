@@ -57,3 +57,8 @@ Route::middleware('auth:sanctum')->get('/user/{user}', [
     App\Http\Controllers\UserController::class,
     'show'
 ]);
+
+Route::middleware('auth:sanctum')->post('/topic_like', [
+    App\Http\Controllers\TopicLikeController::class,
+    'store'
+]);

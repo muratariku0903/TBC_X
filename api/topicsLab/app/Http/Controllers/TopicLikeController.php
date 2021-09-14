@@ -35,7 +35,21 @@ class TopicLikeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = $request->user();
+        $topic_like = new TopicLike;
+        $user_id = $request->user_id;
+        $topic_id = $request->topic_id;
+
+        if ($topic_like->like_exist($user_id, $topic_id)) {
+            $topic_like::where('user_id', $user_id)->where('topic_id', $topic_id)->delete();
+        } else {
+            $topic_like->user_id = $request->user_id;
+            $topic_like->topic_id = $request->topic_id;
+            $topic_like->user()->associate($user);
+            $topic_like->save();
+        }
+
+        return $topic_like;
     }
 
     /**
