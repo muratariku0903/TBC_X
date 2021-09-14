@@ -35,7 +35,21 @@ class CommentLikeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = $request->user();
+        $comment_like = new CommentLike;
+        $user_id = $request->user_id;
+        $comment_id = $request->comment_id;
+
+        if ($comment_like->like_exist($user_id, $comment_id)) {
+            $comment_like::where('user_id', $user_id)->where('comment_id', $comment_id)->delete();
+        } else {
+            $comment_like->user_id = $user_id;
+            $comment_like->comment_id = $comment_id;
+            $comment_like->user()->associate($user);
+            $comment_like->save();
+        }
+
+        return $comment_like;
     }
 
     /**

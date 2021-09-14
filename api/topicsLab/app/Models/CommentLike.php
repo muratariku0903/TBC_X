@@ -14,14 +14,14 @@ class CommentLike extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function topic()
+    public function comment()
     {
-        return $this->belongsTo(Topic::class);
+        return $this->belongsTo(Comment::class);
     }
 
-    public function like_exist($user_id, $topic_id)
+    public function like_exist($user_id, $comment_id)
     {
-        $exist = CommentLike::where('user_id', '=',  $user_id)->where('topic_id', '=', $topic_id)->first();
+        $exist = CommentLike::where('user_id', '=',  $user_id)->where('comment_id', '=', $comment_id)->first();
 
         if ($exist) {
             return true;
