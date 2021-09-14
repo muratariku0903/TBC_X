@@ -19,6 +19,11 @@ class Topic extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function topic_likes()
+    {
+        return $this->hasMany(TopicLike::class);
+    }
+
     public static function scopeSimpleAllList($query)
     {
         return $query->select(['id', 'title', 'created_at']);

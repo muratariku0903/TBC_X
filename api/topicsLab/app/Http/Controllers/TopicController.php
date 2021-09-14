@@ -54,7 +54,7 @@ class TopicController extends Controller
      */
     public function show(Topic $topic)
     {
-        return Topic::where('id', $topic->id)->with('user', 'comments.user')->get();
+        return Topic::where('id', $topic->id)->with('user', 'comments.user')->withCount('topic_likes')->get();
     }
 
     /**

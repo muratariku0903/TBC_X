@@ -14,7 +14,9 @@
           <span>
             <router-link :to="`/user/${user.id}`">{{user.name}}</router-link>
           </span>
-          <LikeBtn v-on:click="like_submit"/>
+          <div class="like_submit_btn" v-on:click="like_submit">
+            <LikeBtn :like_cnt="this.topic_likes_count" />
+          </div>
         </div>
       </template>
     </Card>
@@ -41,6 +43,7 @@ export default {
       topic: {},
       user: {},
       comments: [],
+      topic_likes_count: 0,
       id: null,
       messages: {
         submit: ''
@@ -66,9 +69,11 @@ export default {
             .then((res) => {
               if (res.status === 200 && res.data.length === 1) {
                 this.topic = res.data[0]
+                console.log(this.topic)
                 this.user = this.topic.user
                 this.comments.splice(0)
                 this.comments.push(...this.topic.comments)
+                this.topic_likes_count = this.topic.topic_likes_count
               } else {
                 console.log('取得失敗')
               }
