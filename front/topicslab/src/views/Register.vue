@@ -100,5 +100,9 @@ export default {
       width: 100%;
     }
   }
+
+  span {
+    color: red;
+  }
 }
 </style>
