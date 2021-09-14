@@ -6,6 +6,7 @@
       </template>
       <template #content>
         {{user.name}}
+        <UserContents />
       </template>
       <template #footer>
         <Button label="トピック新規作成" v-on:click="toNewTopic" />
@@ -18,9 +19,13 @@
 
 <script>
 import axios from '@/supports/axios'
+import UserContents from '@/components/UserContents'
 
 export default {
   name: 'Userself',
+  components: {
+    UserContents
+  },
   data () {
     return {
       user: {}
