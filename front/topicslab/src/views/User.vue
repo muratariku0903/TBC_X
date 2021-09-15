@@ -49,6 +49,7 @@ export default {
               console.log(res)
               if (res.status === 200) {
                 this.user = res.data
+                console.log(this.user)
               } else {
                 console.log('取得失敗')
                 alert('取得失敗')

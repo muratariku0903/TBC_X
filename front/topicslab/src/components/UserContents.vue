@@ -20,11 +20,17 @@ import Comments from '@/components/Comments'
 
 export default {
   name: 'UserContents',
+  props: {
+    userContents: Object
+  },
   components: {
     TabView,
     TabPanel,
     Comments
   }
+//   mounted () {
+//     console.log(this.props.userContents)
+//   }
 }
 </script>
 
