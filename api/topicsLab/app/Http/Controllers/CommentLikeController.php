@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Topic;
+use App\Models\CommentLike;
 use Illuminate\Http\Request;
 
-class TopicController extends Controller
+class CommentLikeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class TopicController extends Controller
      */
     public function index()
     {
-        return Topic::simpleAllList()->orderBy('created_at', 'DESC')->get();
+        //
     }
 
     /**
@@ -36,34 +36,40 @@ class TopicController extends Controller
     public function store(Request $request)
     {
         $user = $request->user();
+        $comment_like = new CommentLike;
+        $user_id = $request->user_id;
+        $comment_id = $request->comment_id;
 
-        $topic = new Topic;
-        $topic->title = $request->title;
-        $topic->body = $request->body;
-        $topic->user()->associate($user);
-        $topic->save();
+        if ($comment_like->like_exist($user_id, $comment_id)) {
+            $comment_like::where('user_id', $user_id)->where('comment_id', $comment_id)->delete();
+        } else {
+            $comment_like->user_id = $user_id;
+            $comment_like->comment_id = $comment_id;
+            $comment_like->user()->associate($user);
+            $comment_like->save();
+        }
 
-        return $topic;
+        return $comment_like;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Topic  $topic
+     * @param  \App\Models\CommentLike  $commentLike
      * @return \Illuminate\Http\Response
      */
-    public function show(Topic $topic)
+    public function show(CommentLike $commentLike)
     {
-        return Topic::where('id', $topic->id)->with('user', 'comments.user')->withCount('topic_likes')->get();
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Topic  $topic
+     * @param  \App\Models\CommentLike  $commentLike
      * @return \Illuminate\Http\Response
      */
-    public function edit(Topic $topic)
+    public function edit(CommentLike $commentLike)
     {
         //
     }
@@ -72,10 +78,10 @@ class TopicController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Topic  $topic
+     * @param  \App\Models\CommentLike  $commentLike
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Topic $topic)
+    public function update(Request $request, CommentLike $commentLike)
     {
         //
     }
@@ -83,10 +89,10 @@ class TopicController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Topic  $topic
+     * @param  \App\Models\CommentLike  $commentLike
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Topic $topic)
+    public function destroy(CommentLike $commentLike)
     {
         //
     }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class TopicLike extends Model
 {
     use HasFactory;
 
@@ -19,18 +19,14 @@ class Comment extends Model
         return $this->belongsTo(Topic::class);
     }
 
-    public function likes()
+    public function like_exist($user_id, $topic_id)
     {
-        return $this->hasMany(CommentLike::class);
-    }
+        $exist = TopicLike::where('user_id', '=',  $user_id)->where('topic_id', '=', $topic_id)->first();
 
-    public function get_hello()
-    {
-        return 'hello';
+        if ($exist) {
+            return true;
+        } else {
+            return false;
+        }
     }
-
-    // public function get_likes_cnt()
-    // {
-    //     return 
-    // }
 }

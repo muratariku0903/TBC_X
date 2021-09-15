@@ -16,7 +16,12 @@ class Topic extends Model
 
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class)->withCount('likes');
+    }
+
+    public function topic_likes()
+    {
+        return $this->hasMany(TopicLike::class);
     }
 
     public static function scopeSimpleAllList($query)

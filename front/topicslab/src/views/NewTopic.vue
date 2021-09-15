@@ -7,7 +7,6 @@
       <div class="p-field">
         <label for="title">Topicタイトル</label>
         <InputText v-model="title" id="title" type="text" aria-describedby="title-help" />
-        <small id="title-help">タイトルを入力してください。</small>
         <span class="error-message">{{messages.title}}</span>
       </div>
       <div class="p-field">
@@ -16,7 +15,7 @@
         <span class="error-message">{{messages.body}}</span>
       </div>
       <div class="p-field">
-        <Button icon="pi pi-check" label="Save" v-on:click="submit" />
+        <Button icon="pi pi-check" label="保存" v-on:click="submit" />
         <span class="error-message">{{messages.submit}}</span>
       </div>
     </template>
@@ -90,5 +89,6 @@ export default {
 }
 .error-message{
   color: red;
+  margin-top: 10px;
 }
 </style>

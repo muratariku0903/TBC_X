@@ -14,7 +14,9 @@
           <span>
             <router-link :to="`/user/${user.id}`">{{user.name}}</router-link>
           </span>
-          <LikeBtn/>
+          <div class="like_submit_btn" v-on:click="like_submit">
+            <LikeBtn :like_cnt="this.topic_likes_count" />
+          </div>
         </div>
       </template>
     </Card>
@@ -41,10 +43,18 @@ export default {
       topic: {},
       user: {},
       comments: [],
-      id: null
+      topic_likes_count: 0,
+      id: null,
+      messages: {
+        submit: ''
+      }
     }
   },
   mounted () {
+    if (localStorage.getItem('authenticated') !== 'true') {
+      this.$router.push('/login')
+      return
+    }
     this.id = this.$route.params.id
     if (!this.id) {
       alert('不正なIDです。')
@@ -59,9 +69,11 @@ export default {
             .then((res) => {
               if (res.status === 200 && res.data.length === 1) {
                 this.topic = res.data[0]
+                console.log(this.topic)
                 this.user = this.topic.user
                 this.comments.splice(0)
                 this.comments.push(...this.topic.comments)
+                this.topic_likes_count = this.topic.topic_likes_count
               } else {
                 console.log('取得失敗')
               }
@@ -76,6 +88,31 @@ export default {
     },
     receiveComment (comment) {
       this.comments.push(comment)
+    },
+    like_submit () {
+      axios.get('/sanctum/csrf-cookie')
+        .then(() => {
+          axios.post('/api/topic_like', {
+            user_id: this.user.id,
+            topic_id: this.topic.id
+          })
+            .then((res) => {
+              if (res.status === 201) {
+                console.log('いいね送信に成功しました。')
+              } else if (res.status === 200) {
+                console.log('いいねを外しました。')
+              } else {
+                this.messages.submit = 'いいね送信に失敗しました。'
+              }
+            })
+            .catch((err) => {
+              console.log(err)
+              this.messages.submit = 'いいね送信に失敗しました。'
+            })
+        })
+        .catch((err) => {
+          alert(err)
+        })
     }
   }
 }

@@ -3,6 +3,7 @@
     <Card>
       <template #content>
         {{user.name}}
+        <UserContents />
       </template>
     </Card>
   </div>
@@ -10,9 +11,13 @@
 
 <script>
 import axios from '@/supports/axios'
+import UserContents from '@/components/UserContents'
 
 export default {
   name: 'user',
+  components: {
+    UserContents
+  },
   data () {
     return {
       id: null,
@@ -21,7 +26,7 @@ export default {
   },
   mounted () {
     if (localStorage.getItem('authenticated') !== 'true') {
-      this.$router.push('login')
+      this.$router.push('/login')
       return
     }
 

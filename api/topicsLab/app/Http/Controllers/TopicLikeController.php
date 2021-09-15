@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Topic;
+use App\Models\TopicLike;
 use Illuminate\Http\Request;
 
-class TopicController extends Controller
+class TopicLikeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class TopicController extends Controller
      */
     public function index()
     {
-        return Topic::simpleAllList()->orderBy('created_at', 'DESC')->get();
+        //
     }
 
     /**
@@ -36,34 +36,40 @@ class TopicController extends Controller
     public function store(Request $request)
     {
         $user = $request->user();
+        $topic_like = new TopicLike;
+        $user_id = $request->user_id;
+        $topic_id = $request->topic_id;
 
-        $topic = new Topic;
-        $topic->title = $request->title;
-        $topic->body = $request->body;
-        $topic->user()->associate($user);
-        $topic->save();
+        if ($topic_like->like_exist($user_id, $topic_id)) {
+            $topic_like::where('user_id', $user_id)->where('topic_id', $topic_id)->delete();
+        } else {
+            $topic_like->user_id = $request->user_id;
+            $topic_like->topic_id = $request->topic_id;
+            $topic_like->user()->associate($user);
+            $topic_like->save();
+        }
 
-        return $topic;
+        return $topic_like;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Topic  $topic
+     * @param  \App\Models\TopicLike  $topicLike
      * @return \Illuminate\Http\Response
      */
-    public function show(Topic $topic)
+    public function show(TopicLike $topicLike)
     {
-        return Topic::where('id', $topic->id)->with('user', 'comments.user')->withCount('topic_likes')->get();
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Topic  $topic
+     * @param  \App\Models\TopicLike  $topicLike
      * @return \Illuminate\Http\Response
      */
-    public function edit(Topic $topic)
+    public function edit(TopicLike $topicLike)
     {
         //
     }
@@ -72,10 +78,10 @@ class TopicController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Topic  $topic
+     * @param  \App\Models\TopicLike  $topicLike
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Topic $topic)
+    public function update(Request $request, TopicLike $topicLike)
     {
         //
     }
@@ -83,10 +89,10 @@ class TopicController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Topic  $topic
+     * @param  \App\Models\TopicLike  $topicLike
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Topic $topic)
+    public function destroy(TopicLike $topicLike)
     {
         //
     }
