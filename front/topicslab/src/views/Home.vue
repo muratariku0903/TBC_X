@@ -33,6 +33,7 @@ export default {
     display: block;
     font-weight: bold;
     color: white;
+    font-size: 20px
   }
 }
 </style>
