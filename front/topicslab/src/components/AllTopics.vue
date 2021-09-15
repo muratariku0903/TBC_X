@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     moment: function (date) {
-      return moment(date).format('YYYY/MM/DD HH:mm:SS')
+      return moment(date).format('YYYY/MM/DD HH:mm')
     },
     getAllTopics (page = null) {
       axios.get('/sanctum/csrf-cookie')
