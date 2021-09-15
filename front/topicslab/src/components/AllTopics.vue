@@ -10,18 +10,24 @@
           </h2>
         </template>
     </Card>
+    <Paginator :rows="10" :totalRecords="pagination_data.total" @page="onPage($event)"></Paginator>
   </div>
 </template>
 
 <script>
 import axios from '@/supports/axios'
 import moment from 'moment'
+import Paginator from 'primevue/paginator'
 
 export default {
   name: 'AllTopics',
+  components: {
+    Paginator
+  },
   data () {
     return {
-      topics: []
+      topics: [],
+      pagination_data: {}
     }
   },
   mounted () {
@@ -31,14 +37,21 @@ export default {
     moment: function (date) {
       return moment(date).format('YYYY/MM/DD HH:mm:SS')
     },
-    getAllTopics () {
+    getAllTopics (page = null) {
       axios.get('/sanctum/csrf-cookie')
         .then(() => {
-          axios.get('/api/topics')
+          let path = '/api/topics'
+          if (page) {
+            path += '/' + page + '/'
+          }
+          console.log(path)
+          axios.get(path)
             .then((res) => {
+              console.log(res)
               if (res.status === 200) {
                 this.topics.splice(0)
-                this.topics.push(...res.data)
+                this.topics.push(...res.data.data)
+                this.pagination_data = res.data
               } else {
                 console.log('取得失敗')
               }
@@ -47,6 +60,9 @@ export default {
         .catch((err) => {
           alert(err)
         })
+    },
+    onPage (event) {
+      this.getAllTopics(event.page + 1)
     }
   }
 }
