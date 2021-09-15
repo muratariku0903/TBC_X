@@ -23,4 +23,14 @@ class Comment extends Model
     {
         return $this->hasMany(CommentLike::class);
     }
+
+    public function get_hello()
+    {
+        return 'hello';
+    }
+
+    // public function get_likes_cnt()
+    // {
+    //     return 
+    // }
 }

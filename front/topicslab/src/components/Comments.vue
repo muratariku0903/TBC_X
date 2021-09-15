@@ -5,14 +5,13 @@
         <span>
           <router-link :to="`/user/${comment.user.id}`">{{comment.user.name}}</router-link>
         </span>
-        <!-- <span>{{ comment.user.name }}</span> -->
       </template>
       <div class="comment-box">
         <div class="comment-text">
             {{ comment.body }}
         </div>
         <div class="like_submit_btn" @click="onLikeClick(comment)">
-          <LikeBtn class="like-btn"/>
+          <LikeBtn :like_cnt="comment.likes_count" class="like-btn"/>
         </div>
       </div>
     </Fieldset>
