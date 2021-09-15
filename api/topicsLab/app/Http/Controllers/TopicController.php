@@ -12,9 +12,10 @@ class TopicController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Topic::simpleAllList()->orderBy('created_at', 'DESC')->get();
+        logger('ページ番号', ['page' => $request->page]);
+        return Topic::simpleAllList()->orderBy('created_at', 'DESC')->paginate(10, ['*'], 'page', $request->page);
     }
 
     /**

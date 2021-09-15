@@ -33,7 +33,7 @@ Route::post('/logout', [
     'logout'
 ]);
 
-Route::get('/topics', [
+Route::get('/topics/{page?}/', [
     App\Http\Controllers\TopicController::class,
     'index'
 ]);

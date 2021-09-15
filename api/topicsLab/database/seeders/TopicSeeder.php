@@ -18,7 +18,7 @@ class TopicSeeder extends Seeder
     public function run()
     {
         DB::table('topics')->insert([
-            'id' => '1',
+            'id' => '2',
             'user_id' => '1',
             'title' => 'ゴミの削減について',
             'body' => 'ペットボトルは、捨てるときにかさばりますし、購入頻度を減らしたいのですが、どうしたら環境のためになるのでしょうか。',
@@ -26,7 +26,97 @@ class TopicSeeder extends Seeder
             'updated_at' => new DateTime(),
         ]);
         DB::table('topics')->insert([
-            'id' => '2',
+            'id' => '3',
+            'user_id' => '1',
+            'title' => '地球温暖化や豪雨など、世界各地で気候変動の影響',
+            'body' => '気候変動の原因は人間にあると、既に結論付けられたようです。
+
+というのも、IPCC（気候変動に関する政府間パネル：Intergovernmental Panel on Climate Change）という組織が、2021年8月6日に第6次評価報告書を公開しました。',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+        ]);
+        DB::table('topics')->insert([
+            'id' => '4',
+            'user_id' => '1',
+            'title' => '地球温暖化や豪雨など、世界各地で気候変動の影響',
+            'body' => '気候変動の原因は人間にあると、既に結論付けられたようです。
+
+というのも、IPCC（気候変動に関する政府間パネル：Intergovernmental Panel on Climate Change）という組織が、2021年8月6日に第6次評価報告書を公開しました。',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+        ]);
+        DB::table('topics')->insert([
+            'id' => '5',
+            'user_id' => '1',
+            'title' => '地球温暖化や豪雨など、世界各地で気候変動の影響',
+            'body' => '気候変動の原因は人間にあると、既に結論付けられたようです。
+
+というのも、IPCC（気候変動に関する政府間パネル：Intergovernmental Panel on Climate Change）という組織が、2021年8月6日に第6次評価報告書を公開しました。',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+        ]);
+        DB::table('topics')->insert([
+            'id' => '6',
+            'user_id' => '1',
+            'title' => '地球温暖化や豪雨など、世界各地で気候変動の影響',
+            'body' => '気候変動の原因は人間にあると、既に結論付けられたようです。
+
+というのも、IPCC（気候変動に関する政府間パネル：Intergovernmental Panel on Climate Change）という組織が、2021年8月6日に第6次評価報告書を公開しました。',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+        ]);
+        DB::table('topics')->insert([
+            'id' => '7',
+            'user_id' => '1',
+            'title' => '地球温暖化や豪雨など、世界各地で気候変動の影響',
+            'body' => '気候変動の原因は人間にあると、既に結論付けられたようです。
+
+というのも、IPCC（気候変動に関する政府間パネル：Intergovernmental Panel on Climate Change）という組織が、2021年8月6日に第6次評価報告書を公開しました。',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+        ]);
+        DB::table('topics')->insert([
+            'id' => '8',
+            'user_id' => '1',
+            'title' => '地球温暖化や豪雨など、世界各地で気候変動の影響',
+            'body' => '気候変動の原因は人間にあると、既に結論付けられたようです。
+
+というのも、IPCC（気候変動に関する政府間パネル：Intergovernmental Panel on Climate Change）という組織が、2021年8月6日に第6次評価報告書を公開しました。',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+        ]);
+        DB::table('topics')->insert([
+            'id' => '9',
+            'user_id' => '1',
+            'title' => '地球温暖化や豪雨など、世界各地で気候変動の影響',
+            'body' => '気候変動の原因は人間にあると、既に結論付けられたようです。
+
+というのも、IPCC（気候変動に関する政府間パネル：Intergovernmental Panel on Climate Change）という組織が、2021年8月6日に第6次評価報告書を公開しました。',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+        ]);
+        DB::table('topics')->insert([
+            'id' => '10',
+            'user_id' => '1',
+            'title' => '地球温暖化や豪雨など、世界各地で気候変動の影響',
+            'body' => '気候変動の原因は人間にあると、既に結論付けられたようです。
+
+というのも、IPCC（気候変動に関する政府間パネル：Intergovernmental Panel on Climate Change）という組織が、2021年8月6日に第6次評価報告書を公開しました。',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+        ]);
+        DB::table('topics')->insert([
+            'id' => '11',
+            'user_id' => '1',
+            'title' => '地球温暖化や豪雨など、世界各地で気候変動の影響',
+            'body' => '気候変動の原因は人間にあると、既に結論付けられたようです。
+
+というのも、IPCC（気候変動に関する政府間パネル：Intergovernmental Panel on Climate Change）という組織が、2021年8月6日に第6次評価報告書を公開しました。',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+        ]);
+        DB::table('topics')->insert([
+            'id' => '12',
             'user_id' => '1',
             'title' => '地球温暖化や豪雨など、世界各地で気候変動の影響',
             'body' => '気候変動の原因は人間にあると、既に結論付けられたようです。
