@@ -54,6 +54,7 @@ export default {
                 this.pagination_data = res.data
               } else {
                 console.log('取得失敗')
+                alert('取得失敗')
               }
             })
         })

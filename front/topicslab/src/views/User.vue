@@ -47,10 +47,12 @@ export default {
                 this.user = res.data
               } else {
                 console.log('取得失敗')
+                alert('取得失敗')
               }
             })
             .catch((err) => {
               console.log(err)
+              alert(err)
             })
         })
         .catch((err) => {
