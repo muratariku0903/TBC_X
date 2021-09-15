@@ -16,7 +16,7 @@ class Topic extends Model
 
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class)->withCount('likes');
     }
 
     public function topic_likes()
