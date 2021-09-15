@@ -7,6 +7,7 @@ import Button from 'primevue/button'
 import InputText from 'primevue/inputtext'
 import Fieldset from 'primevue/fieldset'
 import Textarea from 'primevue/textarea'
+import FileUpload from 'primevue/fileupload'
 import 'primevue/resources/themes/saga-blue/theme.css'
 import 'primevue/resources/primevue.min.css'
 import 'primeicons/primeicons.css'
@@ -31,3 +32,4 @@ app.component('Button', Button)
 app.component('InputText', InputText)
 app.component('Fieldset', Fieldset)
 app.component('Textarea', Textarea)
+app.component('FileUpload', FileUpload)
