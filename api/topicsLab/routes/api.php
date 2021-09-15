@@ -38,6 +38,11 @@ Route::get('/topics', [
     'index'
 ]);
 
+Route::get('/users', [
+    App\Http\Controllers\UserController::class,
+    'index'
+]);
+
 Route::middleware('auth:sanctum')->get('/topic/{topic}', [
     App\Http\Controllers\TopicController::class,
     'show'

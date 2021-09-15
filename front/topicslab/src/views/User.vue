@@ -3,7 +3,8 @@
     <Card>
       <template #content>
         {{user.name}}
-        <UserContents />
+        <UserContents :userContents="this.user" />
+        <!-- <Comments :comments="this.user.comments" /> -->
       </template>
     </Card>
   </div>
@@ -12,16 +13,19 @@
 <script>
 import axios from '@/supports/axios'
 import UserContents from '@/components/UserContents'
+// import Comments from '@/components/Comments'
 
 export default {
   name: 'user',
   components: {
     UserContents
+    // Comments
   },
   data () {
     return {
       id: null,
       user: {}
+      // comments: []
     }
   },
   mounted () {
