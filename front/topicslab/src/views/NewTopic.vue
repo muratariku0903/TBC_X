@@ -15,6 +15,11 @@
         <span class="error-message">{{messages.body}}</span>
       </div>
       <div class="p-field">
+        <label for="title">画像</label>
+        <FileUpload name="demo[]" url="./upload" />
+        <span class="error-message">{{messages.img}}</span>
+      </div>
+      <div class="p-field">
         <Button icon="pi pi-check" label="保存" v-on:click="submit" />
         <span class="error-message">{{messages.submit}}</span>
       </div>
