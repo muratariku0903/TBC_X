@@ -48,13 +48,11 @@ export default {
                 this.$emit('sentComment', res.data)
               } else {
                 this.message = '送信に失敗しました。'
-                alert('送信に失敗しました。')
               }
             })
             .catch((err) => {
               console.log(err)
               this.message = '送信に失敗しました。'
-              alert('送信に失敗しました。')
             })
         })
         .catch((err) => {
