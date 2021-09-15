@@ -11,7 +11,7 @@
             {{ comment.body }}
         </div>
         <div class="like_submit_btn" @click="onLikeClick(comment)">
-          <LikeBtn :like_cnt="comment.likes_count" class="like-btn"/>
+          <LikeBtn :like_cnt="comment.likes_count ?? 0" class="like-btn"/>
         </div>
       </div>
     </Fieldset>
