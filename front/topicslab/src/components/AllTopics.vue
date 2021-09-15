@@ -41,6 +41,7 @@ export default {
                 this.topics.push(...res.data)
               } else {
                 console.log('取得失敗')
+                alert('取得失敗')
               }
             })
         })

@@ -48,10 +48,12 @@ export default {
             })
             .catch(err => {
               console.log(err)
+              alert('取得失敗')
             })
         })
         .catch((err) => {
           alert(err)
+          alert('取得失敗')
         })
     },
     withdraw () {
@@ -66,11 +68,13 @@ export default {
                 this.user = res.data
               } else {
                 console.log('取得失敗')
+                alert('取得失敗')
               }
             })
         })
         .catch((err) => {
           alert(err)
+          alert('取得失敗')
         })
     }
   }

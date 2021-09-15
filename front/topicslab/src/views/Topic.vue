@@ -76,10 +76,12 @@ export default {
                 this.topic_likes_count = this.topic.topic_likes_count
               } else {
                 console.log('取得失敗')
+                alert('取得失敗')
               }
             })
             .catch((err) => {
               console.log(err)
+              alert(err)
             })
         })
         .catch((err) => {
