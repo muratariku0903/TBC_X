@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        // return User::simpleAllList()->orderBy('created_at', 'DESC')->get();
     }
 
     /**
