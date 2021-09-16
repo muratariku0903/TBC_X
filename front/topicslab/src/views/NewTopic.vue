@@ -16,8 +16,8 @@
       </div>
       <div class="p-field">
         <label for="title">画像</label>
-        <FileUpload name="demo[]" url="./upload" />
-        <span class="error-message">{{messages.img}}</span>
+        <input type="file" name="img" @change="onFileChange">
+        <span class="error-message">{{messages.file}}</span>
       </div>
       <div class="p-field">
         <Button icon="pi pi-check" label="保存" v-on:click="submit" />
@@ -32,14 +32,19 @@ import axios from '@/supports/axios'
 
 export default {
   name: 'NewTopic',
+  Headers: {
+    'Content-Type': 'multipart/form-data'
+  },
   data () {
     return {
       title: '',
       body: '',
+      file: null,
       messages: {
         submit: '',
         title: '',
-        body: ''
+        body: '',
+        file: ''
       }
     }
   },
@@ -61,15 +66,25 @@ export default {
 
       if (!title || !body) return
 
+      console.log(this.file)
+      const formData = new FormData()
+      formData.append('title', title)
+      formData.append('body', body)
+      formData.append('img', this.file)
+      const config = {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      }
+
+      console.log(formData)
+
       axios.get('/sanctum/csrf-cookie')
         .then(() => {
-          axios.post('/api/topic', {
-            title: title,
-            body: body
-          })
+          axios.post('/api/topic', formData, config)
             .then((res) => {
               if (res.status === 201) {
-              //
+                console.log('トピック作成しました。')
               } else {
                 this.messages.submit = '送信に失敗しました。'
               }
@@ -82,6 +97,9 @@ export default {
         .catch((err) => {
           alert(err)
         })
+    },
+    onFileChange (e) {
+      this.file = e.target.files[0]
     }
   }
 }

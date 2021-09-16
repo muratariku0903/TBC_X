@@ -43,6 +43,15 @@ class TopicController extends Controller
         $topic->body = $request->body;
         $topic->user()->associate($user);
         $topic->save();
+        
+        if ($request->hasFile('img')) {
+            $img = $request->file('img');
+            $filename = $img->getClientOriginalName();
+            $extension = pathinfo($filename, PATHINFO_EXTENSION);
+            $img->storeAs('public', $topic->id . '.' . $extension);
+            $topic->img = $topic->id . '.' . $extension;
+            $topic->save();
+        }
 
         return $topic;
     }
