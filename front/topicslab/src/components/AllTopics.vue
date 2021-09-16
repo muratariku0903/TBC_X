@@ -8,6 +8,9 @@
               {{topic.title}}
             </router-link>
           </h2>
+        <template v-if="topic.img">
+          <img v-bind:src="'http://localhost:8000/storage/' + topic.img" alt="画像" width="50">
+        </template>
         </template>
     </Card>
     <Paginator :rows="10" :totalRecords="pagination_data.total" @page="onPage($event)"></Paginator>
@@ -32,6 +35,7 @@ export default {
   },
   mounted () {
     this.getAllTopics()
+    console.log(this.topics)
   },
   methods: {
     moment: function (date) {

@@ -8,6 +8,9 @@
         <div class="body-text">
           {{topic.body}}
         </div>
+        <template v-if="this.topic.img">
+            <img v-bind:src="'http://localhost:8000/storage/' + this.topic.img" alt="画像" width="150">
+        </template>
       </template>
       <template #footer>
         <div class="box">
