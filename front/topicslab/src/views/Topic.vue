@@ -136,4 +136,11 @@ export default {
   text-align: right;
   display: block;
 }
+.box{
+  padding-bottom: 10px;
+}
+.like_submit_btn{
+  width: 36px;
+  height: 36px;
+}
 </style>
