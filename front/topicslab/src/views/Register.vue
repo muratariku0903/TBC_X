@@ -19,6 +19,10 @@
             <InputText id="password" type="password" v-model="password" />
           </div>
           <div class="p-field">
+            <label for="intro">自己紹介</label>
+            <Textarea id="intro" type="textarea" v-model="intro" :autoResize="true" rows="5" />
+          </div>
+          <div class="p-field">
             <label for="img">画像</label>
             <input type="file" name="img" @change="onFileChange">
           </div>
@@ -42,6 +46,7 @@ export default {
       name: '',
       email: '',
       password: '',
+      intro: '',
       file: null,
       message: ''
     }
@@ -51,6 +56,7 @@ export default {
       const name = this.name.trim()
       const email = this.email.trim()
       const password = this.password.trim()
+      const intro = this.intro.trim()
       if (!name || !email || !password) {
         this.message = '全て必須項目です。'
         return
@@ -60,6 +66,7 @@ export default {
       formData.append('name', name)
       formData.append('email', email)
       formData.append('password', password)
+      formData.append('intro', intro)
       formData.append('img', this.file)
       const config = {
         headers: {
