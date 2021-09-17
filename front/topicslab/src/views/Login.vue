@@ -53,6 +53,7 @@ export default {
             .then((res) => {
               if (res.status === 200) {
                 console.log('ログイン成功')
+                alert('ログイン成功！')
                 localStorage.setItem('authenticated', 'true')
               } else {
                 this.message = 'ログインに失敗しました。'
