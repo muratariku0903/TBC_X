@@ -7,7 +7,10 @@
       </TabPanel>
       <TabPanel header="コメント">
         <!-- ここにコメントを表示 -->
-        <Comments :comments="userContents"/>
+        <!-- <Comments :comments="userContents"/> -->
+      </TabPanel>
+      <TabPanel header="自己紹介">
+        {{userContents.intro}}
       </TabPanel>
     </TabView>
   </div>
@@ -16,7 +19,7 @@
 <script>
 import TabView from 'primevue/tabview'
 import TabPanel from 'primevue/tabpanel'
-import Comments from '@/components/Comments'
+// import Comments from '@/components/Comments'
 
 export default {
   name: 'UserContents',
@@ -25,8 +28,8 @@ export default {
   },
   components: {
     TabView,
-    TabPanel,
-    Comments
+    TabPanel
+    // Comments
   }
 //   mounted () {
 //     console.log(this.props.userContents)

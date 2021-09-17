@@ -50,8 +50,10 @@ export default {
             .then((res) => {
               if (res.status === 201) {
                 console.log('コメントに対するいいね送信に成功しました。')
+                this.comment_likes_count++
               } else if (res.status === 200) {
                 console.log('コメントに対するいいねを外しました。')
+                this.comment_likes_count--
               } else {
                 this.messages.submit = 'コメントに対するいいね送信に失敗しました。'
               }

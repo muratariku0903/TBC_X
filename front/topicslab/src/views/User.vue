@@ -3,9 +3,9 @@
     <Card>
       <template #content>
         {{user.name}}
-        <div v-if="user.img">
+        <template v-if="user.img">
           <img v-bind:src="'http://localhost:8000/storage/user/' + user.img" alt="ユーザー画像" width="50">
-        </div>
+        </template>
         <UserContents :userContents="this.user" />
         <!-- <Comments :comments="this.user.comments" /> -->
       </template>
@@ -51,7 +51,7 @@ export default {
             .then((res) => {
               console.log(res)
               if (res.status === 200) {
-                this.user = res.data
+                this.user = res.data[0]
                 console.log(this.user)
               } else {
                 console.log('取得失敗')
