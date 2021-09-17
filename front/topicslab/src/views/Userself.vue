@@ -11,10 +11,12 @@
         {{this.userContents.name}}
         <UserContents :userContents="this.userContents"/>
       </template>
-      <template #footer>
-        <Button label="トピック新規作成" v-on:click="toNewTopic" />
-        <Button label="ログアウト" class="p-button-warning" v-on:click="logout" />
-        <Button label="サインアウト" class="p-button-danger" v-on:click="withdraw" />
+      <template #footer class="parent">
+        <div class="buttonList">
+          <Button label="トピック新規作成" class="p-button-sm" v-on:click="toNewTopic" />
+          <Button label="ログアウト" class="p-button-warning p-button-sm" v-on:click="logout" />
+          <Button label="サインアウト" class="p-button-danger" v-on:click="withdraw" />
+        </div>
       </template>
     </Card>
   </div>
@@ -109,5 +111,16 @@ export default {
   height: 120px;
   border-radius: 50%;
   border: 3px solid #595959;
+}
+.parent{
+  position: relative;
+}
+.buttonList{
+  position: absolute;
+  top: 15%;
+  right: 35.5%;
+}
+.buttonList > button{
+  font-size: 15px;
 }
 </style>
