@@ -3,13 +3,13 @@
     <Card>
       <template #title>
         マイページ
-        <div v-if="user.img">
-          <img v-bind:src="'http://localhost:8000/storage/user/' + user.img" alt="ユーザー画像" id="user-image">
+        <div v-if="this.userContents.img">
+          <img v-bind:src="'http://localhost:8000/storage/user/' + this.userContents.img" alt="ユーザー画像" id="user-image">
         </div>
       </template>
       <template #content>
-        {{user.name}}
-        <UserContents />
+        {{this.userContents.name}}
+        <UserContents :userContents="this.userContents"/>
       </template>
       <template #footer>
         <Button label="トピック新規作成" v-on:click="toNewTopic" />
@@ -31,7 +31,7 @@ export default {
   },
   data () {
     return {
-      user: {}
+      userContents: {}
     }
   },
   mounted () {
@@ -73,7 +73,16 @@ export default {
           axios.get('/api/user')
             .then((res) => {
               if (res.status === 200) {
-                this.user = res.data
+                axios.get(`/api/user/${res.data.id}`)
+                  .then((res) => {
+                    if (res.status === 200) {
+                      this.userContents = res.data[0]
+                      console.log(this.userContents)
+                    } else {
+                      console.log('取得失敗')
+                      alert('取得失敗')
+                    }
+                  })
               } else {
                 console.log('取得失敗')
                 alert('取得失敗')
