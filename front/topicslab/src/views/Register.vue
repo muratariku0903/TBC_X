@@ -19,13 +19,16 @@
             <InputText id="password" type="password" v-model="password" />
           </div>
           <div class="p-field">
-            <label for="img">画像</label>
-            <input type="file" name="img" @change="onFileChange">
+            <!-- <label for="img">画像</label> -->
+            <label for="btn" class="button">
+              ファイルを選択
+              <input type="file" name="img" @change="onFileChange" id="btn">
+            </label>
           </div>
         </div>
         <span>{{message}}</span>
         <div class="p-field">
-          <Button icon="pi pi-check" label="登録" v-on:click="register" />
+          <Button icon="pi pi-check" id="toroc" label="登録" v-on:click="register" />
         </div>
       </template>
     </Card>
@@ -119,5 +122,30 @@ export default {
   span {
     color: red;
   }
+}
+.button{
+  background: #fff;
+  color: #595959;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 3px;
+  border: 2px solid #595959;
+  cursor: pointer;
+  box-sizing: content-box;
+  padding: 5px 34.3%;
+  margin: 0;
+  display: inline-block;
+  transition: .3s;
+  margin-top: 30px;
+}
+.button:hover{
+  color: #fff;
+  background: #595959;
+}
+.button input{
+  display: none;
+}
+#toroc{
+  margin: 0;
 }
 </style>

@@ -9,7 +9,7 @@
             </router-link>
           </h2>
           <template v-if="topic.img">
-            <img v-bind:src="'http://localhost:8000/storage/' + topic.img" alt="画像" width="50">
+            <img v-bind:src="'http://localhost:8000/storage/' + topic.img" alt="画像" width="250">
           </template>
         </template>
     </Card>
