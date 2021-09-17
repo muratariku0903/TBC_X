@@ -4,7 +4,7 @@
         <template #content>
           <span class="topic-date">投稿日：{{moment(topic.created_at)}}</span>
           <h2>
-            <router-link :to="`/topic/${topic.id}`">
+            <router-link :to="`/topic/${topic.id}`" id="topicsLink">
               {{topic.title}}
             </router-link>
           </h2>
@@ -80,5 +80,13 @@ export default {
   .topic-date {
     font-size: 80%;
   }
+}
+#topicsLink{
+  text-decoration: none;
+  font-size: 28px;
+  color: black;
+}
+#topicsLink:hover{
+  opacity: 0.7;
 }
 </style>

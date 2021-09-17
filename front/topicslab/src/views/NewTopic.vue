@@ -16,7 +16,10 @@
       </div>
       <div class="p-field">
         <label for="title">画像</label>
-        <input type="file" name="img" @change="onFileChange">
+        <label for="img" class="button">
+          ファイルを選択
+          <input id="img" type="file" name="img" @change="onFileChange">
+        </label>
         <span class="error-message">{{messages.file}}</span>
       </div>
       <div class="p-field">
@@ -110,5 +113,25 @@ export default {
 .error-message{
   color: red;
   margin-top: 10px;
+}
+.button{
+  background: #fff;
+  color: #595959;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 3px;
+  border: 2px solid #595959;
+  cursor: pointer;
+  padding: 15px 30px;
+  margin: 0 10px 0 0;
+  display: inline-block;
+  transition: .3s;
+}
+.button:hover{
+  color: #fff;
+  background: #595959;
+}
+.button input{
+  display: none;
 }
 </style>
