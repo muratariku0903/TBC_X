@@ -85,6 +85,23 @@ export default {
   text-decoration: none;
   font-size: 28px;
   color: black;
+  position: relative;
+  display: inline-block;
+  transition: .3s;
+}
+#topicsLink::after{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  content: '';
+  width: 0;
+  height: 2px;
+  background-color: #595959;
+  transition: .3s;
+  transform: translateX(-50%);
+}
+#topicsLink:hover::after{
+  width: 100%;
 }
 #topicsLink:hover{
   opacity: 0.7;
