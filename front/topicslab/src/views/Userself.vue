@@ -4,7 +4,7 @@
       <template #title>
         マイページ
         <div v-if="user.img">
-          <img v-bind:src="'http://localhost:8000/storage/user/' + user.img" alt="ユーザー画像" width="50">
+          <img v-bind:src="'http://localhost:8000/storage/user/' + user.img" alt="ユーザー画像" id="user-image">
         </div>
       </template>
       <template #content>
@@ -94,5 +94,11 @@ export default {
   .p-button {
     margin-right: 10px;
   }
+}
+#user-image{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #595959;
 }
 </style>
