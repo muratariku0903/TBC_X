@@ -18,6 +18,10 @@
             <label for="password">パスワード</label>
             <InputText id="password" type="password" v-model="password" />
           </div>
+          <div class="p-field">
+            <label for="img">画像</label>
+            <input type="file" name="img" @change="onFileChange">
+          </div>
         </div>
         <span>{{message}}</span>
         <div class="p-field">
@@ -38,6 +42,7 @@ export default {
       name: '',
       email: '',
       password: '',
+      file: null,
       message: ''
     }
   },
@@ -51,13 +56,20 @@ export default {
         return
       }
 
+      const formData = new FormData()
+      formData.append('name', name)
+      formData.append('email', email)
+      formData.append('password', password)
+      formData.append('img', this.file)
+      const config = {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      }
+
       axios.get('/sanctum/csrf-cookie')
         .then(() => {
-          axios.post('/api/register', {
-            name: this.name,
-            email: this.email,
-            password: this.password
-          })
+          axios.post('/api/register', formData, config)
             .then((res) => {
               if (res.status === 201) {
                 alert('ユーザー登録成功')
@@ -74,6 +86,9 @@ export default {
         .catch((err) => {
           alert(err)
         })
+    },
+    onFileChange (e) {
+      this.file = e.target.files[0]
     }
   }
 }

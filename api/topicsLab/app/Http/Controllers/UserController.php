@@ -42,6 +42,15 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
+        if ($request->hasFile('img')) {
+            $img = $request->file('img');
+            $filename = $img->getClientOriginalName();
+            $extension = pathinfo($filename, PATHINFO_EXTENSION);
+            $img->storeAs('public/user', $user->id . '.' . $extension);
+            $user->img = $user->id . '.' . $extension;
+            $user->save();
+        }
+
         return $user;
     }
 

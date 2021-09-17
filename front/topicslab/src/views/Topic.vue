@@ -16,6 +16,9 @@
         <div class="box">
           <span>
             <router-link :to="`/user/${user.id}`">{{user.name}}</router-link>
+            <div v-if="this.user.img">
+              <img v-bind:src="'http://localhost:8000/storage/user/' + this.user.img" alt="ユーザー画像" width="50">
+            </div>
           </span>
           <div class="like_submit_btn" v-on:click="like_submit">
             <LikeBtn :like_cnt="this.topic_likes_count" />
@@ -104,8 +107,10 @@ export default {
             .then((res) => {
               if (res.status === 201) {
                 console.log('いいね送信に成功しました。')
+                this.topic_likes_count++
               } else if (res.status === 200) {
                 console.log('いいねを外しました。')
+                this.topic_likes_count--
               } else {
                 this.messages.submit = 'いいね送信に失敗しました。'
               }
