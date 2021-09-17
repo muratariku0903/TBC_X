@@ -4,6 +4,9 @@
       <template #legend>
         <span>
           <router-link :to="`/user/${comment.user.id}`">{{comment.user.name}}</router-link>
+          <div v-if="comment.user.img">
+            <img v-bind:src="'http://localhost:8000/storage/user/' + comment.user.img" alt="ユーザー画像" width="50">
+          </div>
         </span>
       </template>
       <div class="comment-box">

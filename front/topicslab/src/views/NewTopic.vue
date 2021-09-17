@@ -69,7 +69,6 @@ export default {
 
       if (!title || !body) return
 
-      console.log(this.file)
       const formData = new FormData()
       formData.append('title', title)
       formData.append('body', body)
@@ -79,8 +78,6 @@ export default {
           'content-type': 'multipart/form-data'
         }
       }
-
-      console.log(formData)
 
       axios.get('/sanctum/csrf-cookie')
         .then(() => {

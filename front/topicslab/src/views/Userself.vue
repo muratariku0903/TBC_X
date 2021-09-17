@@ -3,6 +3,9 @@
     <Card>
       <template #title>
         マイページ
+        <div v-if="user.img">
+          <img v-bind:src="'http://localhost:8000/storage/user/' + user.img" alt="ユーザー画像" width="50">
+        </div>
       </template>
       <template #content>
         {{user.name}}

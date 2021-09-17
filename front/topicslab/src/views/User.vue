@@ -3,6 +3,9 @@
     <Card>
       <template #content>
         {{user.name}}
+        <div v-if="user.img">
+          <img v-bind:src="'http://localhost:8000/storage/user/' + user.img" alt="ユーザー画像" width="50">
+        </div>
         <UserContents :userContents="this.user" />
         <!-- <Comments :comments="this.user.comments" /> -->
       </template>
