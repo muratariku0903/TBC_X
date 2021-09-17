@@ -3,9 +3,9 @@
     <Fieldset v-for="comment in comments" :key="comment.id">
       <template #legend>
         <span>
-          <router-link :to="`/user/${comment.user.id}`">{{comment.user.name}}</router-link>
+          <router-link :to="`/user/${comment.user.id}`" class="user-link">{{comment.user.name}}</router-link>
           <div v-if="comment.user.img">
-            <img v-bind:src="'http://localhost:8000/storage/user/' + comment.user.img" alt="ユーザー画像" width="50">
+            <img v-bind:src="'http://localhost:8000/storage/user/' + comment.user.img" alt="ユーザー画像" id="user-image">
           </div>
         </span>
       </template>
@@ -86,5 +86,20 @@ export default {
 
 .comment-text {
   white-space: pre-wrap;
+}
+#user-image{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-left: 20px;
+  border: 3px solid #595959;
+}
+.user-link{
+  text-decoration: none;
+  font-size: 18px;
+  color: #595959;
+}
+.user-link:hover{
+  opacity: 0.7;
 }
 </style>
